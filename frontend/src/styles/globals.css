@@ -1,0 +1,408 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* ════════════════════════════════════════════════
+   ULTRAVIOLET NEBULA — Design System
+   ════════════════════════════════════════════════ */
+
+:root {
+  /* Palette */
+  --void:       #09050F;
+  --amethyst:   #120B1C;
+  --nebula-900: #190D2E;
+  --nebula-800: #1F1238;
+  --uv-500:     #A855F7;
+  --uv-600:     #9333EA;
+  --uv-700:     #7C3AED;
+  --uv-400:     #C084FC;
+  --uv-300:     #D8B4FE;
+  --mag-400:    #E879F9;
+  --lav-400:    #818CF8;
+
+  /* Semantic text colours — dark defaults */
+  --text:         #F0EAFF;
+  --text-muted:   #9580C1;
+  --text-dim:     #6B5E8A;
+  --text-faint:   #42355E;
+
+  /* Surface / chrome colours — dark defaults */
+  --c-nav-bg:       rgba(9, 5, 15, 0.85);
+  --c-nav-border:   rgba(168, 85, 247, 0.15);
+  --c-footer-bg:    rgba(9, 5, 15, 0.95);
+  --c-overlay:      rgba(9, 5, 15, 0.88);
+  --c-dropdown-bg:  #1F1238;
+  --c-row-bg:       rgba(168, 85, 247, 0.04);
+  --c-row-border:   rgba(168, 85, 247, 0.10);
+  --c-section-lbl:  #7C3AED;
+}
+
+/* ────────────────────────────────────────────────
+   Light Mode — variable overrides ONLY
+   (No nesting here — flat selectors below handle
+   class/element overrides for max browser support)
+   ──────────────────────────────────────────────── */
+:root:not(.dark) {
+  --void:         #FAF7FF;
+  --amethyst:     #F3EEFF;
+  --nebula-900:   #EDE4FF;
+  --nebula-800:   #E8DCFF;
+  --text:         #1A0A2E;
+  --text-muted:   #6D28D9;
+  --text-dim:     #7C3AED;
+  --text-faint:   #9333EA;
+
+  --c-nav-bg:      rgba(250, 247, 255, 0.92);
+  --c-nav-border:  rgba(124, 58, 237, 0.2);
+  --c-footer-bg:   rgba(243, 238, 255, 0.98);
+  --c-overlay:     rgba(243, 238, 255, 0.92);
+  --c-dropdown-bg: #F3EEFF;
+  --c-row-bg:      rgba(168, 85, 247, 0.04);
+  --c-row-border:  rgba(168, 85, 247, 0.15);
+  --c-section-lbl: #7C3AED;
+}
+
+/* ── Base ── */
+@layer base {
+  *, *::before, *::after { box-sizing: border-box; }
+
+  html { scroll-behavior: smooth; }
+
+  body {
+    font-family: 'Space Grotesk', system-ui, sans-serif;
+    background-color: var(--void);
+    color: var(--text);
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    background-image:
+      radial-gradient(ellipse at 50% 0%,   rgba(124, 58, 237, 0.14) 0%,  transparent 55%),
+      radial-gradient(ellipse at 90% 50%,  rgba(168, 85, 247, 0.07) 0%,  transparent 45%),
+      radial-gradient(ellipse at 10% 80%,  rgba(232,121, 249, 0.05) 0%,  transparent 45%);
+    background-attachment: fixed;
+    transition: background-color 0.3s ease, color 0.3s ease;
+  }
+
+  h1, h2, h3, h4, h5, h6 {
+    font-family: 'Space Grotesk', system-ui, sans-serif;
+    font-weight: 700;
+    letter-spacing: -0.025em;
+    color: var(--text);
+  }
+
+  /* Custom scrollbar — UV tint */
+  ::-webkit-scrollbar { width: 5px; height: 5px; }
+  ::-webkit-scrollbar-track { background: var(--void); }
+  ::-webkit-scrollbar-thumb {
+    background: rgba(168, 85, 247, 0.4);
+    border-radius: 9999px;
+  }
+  ::-webkit-scrollbar-thumb:hover { background: rgba(168, 85, 247, 0.7); }
+
+  /* Date input calendar icon — UV tint */
+  input[type="date"]::-webkit-calendar-picker-indicator {
+    filter: invert(0.6) sepia(1) saturate(5) hue-rotate(250deg);
+    cursor: pointer;
+    opacity: 0.7;
+  }
+  input[type="date"]::-webkit-calendar-picker-indicator:hover { opacity: 1; }
+
+  select { background-image: none; }
+}
+
+/* ════════════════════════════════════════════════
+   Component Classes (pure CSS — no @apply with custom values)
+   ════════════════════════════════════════════════ */
+@layer components {
+
+  /* ── Dot grid overlay ── */
+  .dot-grid {
+    background-image: radial-gradient(rgba(168, 85, 247, 0.12) 1px, transparent 1px);
+    background-size: 26px 26px;
+  }
+
+  /* ── Primary glassmorphism panel ── */
+  .uv-glass {
+    background: rgba(168, 85, 247, 0.05);
+    backdrop-filter: blur(22px);
+    -webkit-backdrop-filter: blur(22px);
+    border: 1px solid rgba(168, 85, 247, 0.15);
+    border-radius: 1rem;
+    box-shadow:
+      0 0 0 1px rgba(168, 85, 247, 0.05) inset,
+      0 4px 24px rgba(0, 0, 0, 0.5),
+      0 0 20px rgba(168, 85, 247, 0.06);
+    transition: border-color 0.25s ease, box-shadow 0.25s ease, background 0.3s ease;
+  }
+  .uv-glass:hover {
+    border-color: rgba(168, 85, 247, 0.32);
+    box-shadow:
+      0 0 0 1px rgba(168, 85, 247, 0.08) inset,
+      0 4px 32px rgba(0, 0, 0, 0.5),
+      0 0 35px rgba(168, 85, 247, 0.14);
+  }
+
+  /* ── Lighter inner glass (for nested panels) ── */
+  .uv-glass-sm {
+    background: rgba(168, 85, 247, 0.04);
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+    border: 1px solid rgba(168, 85, 247, 0.12);
+    border-radius: 0.75rem;
+  }
+
+  /* ── Primary UV gradient button ── */
+  .uv-btn {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.5rem;
+    padding: 0.75rem 1.5rem;
+    border-radius: 0.875rem;
+    font-family: 'Space Grotesk', sans-serif;
+    font-weight: 600;
+    font-size: 0.875rem;
+    color: #ffffff;
+    border: none;
+    cursor: pointer;
+    position: relative;
+    background: linear-gradient(135deg, #7C3AED 0%, #A855F7 55%, #C084FC 100%);
+    box-shadow:
+      0 0 22px rgba(168, 85, 247, 0.45),
+      0 4px 16px rgba(124, 58, 237, 0.3),
+      inset 0 1px 0 rgba(255,255,255,0.15);
+    transition: box-shadow 0.2s ease, transform 0.15s ease;
+  }
+  .uv-btn:hover:not(:disabled) {
+    box-shadow:
+      0 0 40px rgba(168, 85, 247, 0.7),
+      0 8px 24px rgba(124, 58, 237, 0.4),
+      inset 0 1px 0 rgba(255,255,255,0.2);
+    transform: translateY(-2px);
+  }
+  .uv-btn:active:not(:disabled) { transform: translateY(0); }
+  .uv-btn:disabled {
+    opacity: 0.45;
+    cursor: not-allowed;
+    transform: none;
+  }
+
+  /* ── Ghost / secondary button ── */
+  .uv-btn-ghost {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.5rem;
+    padding: 0.75rem 1.5rem;
+    border-radius: 0.875rem;
+    font-family: 'Space Grotesk', sans-serif;
+    font-weight: 600;
+    font-size: 0.875rem;
+    color: #C084FC;
+    background: rgba(168, 85, 247, 0.08);
+    border: 1px solid rgba(168, 85, 247, 0.3);
+    cursor: pointer;
+    transition: background 0.2s ease, border-color 0.2s ease, box-shadow 0.2s ease, transform 0.15s ease;
+  }
+  .uv-btn-ghost:hover:not(:disabled) {
+    background: rgba(168, 85, 247, 0.15);
+    border-color: rgba(168, 85, 247, 0.55);
+    box-shadow: 0 0 20px rgba(168, 85, 247, 0.2);
+    transform: translateY(-1px);
+  }
+  .uv-btn-ghost:disabled {
+    opacity: 0.4;
+    cursor: not-allowed;
+  }
+
+  /* ── Danger button ── */
+  .uv-btn-danger {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.375rem;
+    padding: 0.5rem 0.875rem;
+    border-radius: 0.625rem;
+    font-family: 'Space Grotesk', sans-serif;
+    font-weight: 600;
+    font-size: 0.75rem;
+    color: #F87171;
+    background: rgba(248, 113, 113, 0.08);
+    border: 1px solid rgba(248, 113, 113, 0.25);
+    cursor: pointer;
+    transition: background 0.2s ease, border-color 0.2s ease, box-shadow 0.2s ease;
+  }
+  .uv-btn-danger:hover:not(:disabled) {
+    background: rgba(248, 113, 113, 0.16);
+    border-color: rgba(248, 113, 113, 0.5);
+    box-shadow: 0 0 15px rgba(248, 113, 113, 0.2);
+  }
+  .uv-btn-danger:disabled { opacity: 0.4; cursor: not-allowed; }
+
+  /* ── Form input ── */
+  .uv-input {
+    width: 100%;
+    padding: 0.75rem 1rem;
+    border-radius: 0.75rem;
+    font-family: 'Space Grotesk', sans-serif;
+    font-size: 0.875rem;
+    color: var(--text);
+    background: rgba(168, 85, 247, 0.06);
+    border: 1px solid rgba(168, 85, 247, 0.2);
+    outline: none;
+    transition: border-color 0.2s ease, box-shadow 0.2s ease, background 0.3s ease, color 0.3s ease;
+    appearance: none;
+    -webkit-appearance: none;
+  }
+  .uv-input::placeholder { color: rgba(149, 128, 193, 0.5); }
+  .uv-input:focus {
+    border-color: rgba(168, 85, 247, 0.65);
+    box-shadow: 0 0 0 3px rgba(168, 85, 247, 0.12), 0 0 20px rgba(168, 85, 247, 0.08);
+  }
+  .uv-input:hover:not(:focus) { border-color: rgba(168, 85, 247, 0.38); }
+  .uv-input option {
+    background-color: var(--c-dropdown-bg);
+    color: var(--text);
+  }
+
+  /* ── Gradient text ── */
+  .uv-gradient-text {
+    background: linear-gradient(135deg, #D8B4FE 0%, #A855F7 42%, #E879F9 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+  }
+
+  /* ── Skeleton / shimmer ── */
+  .uv-skeleton {
+    background: linear-gradient(
+      90deg,
+      rgba(168, 85, 247, 0.06) 25%,
+      rgba(168, 85, 247, 0.14) 50%,
+      rgba(168, 85, 247, 0.06) 75%
+    );
+    background-size: 300% 100%;
+    animation: shimmerUV 2.2s linear infinite;
+    border-radius: 0.5rem;
+  }
+
+  /* ── Section wrapper ── */
+  .uv-section {
+    max-width: 80rem;
+    margin-left: auto;
+    margin-right: auto;
+    padding-left: 1.25rem;
+    padding-right: 1.25rem;
+  }
+  @media (min-width: 640px) {
+    .uv-section { padding-left: 1.5rem; padding-right: 1.5rem; }
+  }
+  @media (min-width: 1024px) {
+    .uv-section { padding-left: 2rem; padding-right: 2rem; }
+  }
+
+  /* ── Inline UV tag chip ── */
+  .uv-chip {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.375rem;
+    padding: 0.25rem 0.75rem;
+    border-radius: 9999px;
+    font-size: 0.75rem;
+    font-weight: 600;
+    font-family: 'Space Grotesk', sans-serif;
+    background: rgba(168, 85, 247, 0.1);
+    border: 1px solid rgba(168, 85, 247, 0.3);
+    color: #C084FC;
+  }
+
+  /* ── Form label ── */
+  .uv-label {
+    display: block;
+    font-size: 0.7rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    color: var(--text-muted);
+    margin-bottom: 0.4rem;
+  }
+
+  /* ── Divider ── */
+  .uv-divider {
+    height: 1px;
+    background: linear-gradient(90deg, transparent, rgba(168,85,247,0.3), transparent);
+  }
+}
+
+/* ════════════════════════════════════════════════
+   Light Mode — FLAT selector overrides
+   (avoids CSS nesting which requires postcss-nesting)
+   ════════════════════════════════════════════════ */
+
+/* Body */
+:root:not(.dark) body {
+  background-color: #FAF7FF;
+  color: #1A0A2E;
+  background-image:
+    radial-gradient(ellipse at 50% 0%, rgba(168, 85, 247, 0.08) 0%, transparent 55%),
+    radial-gradient(ellipse at 85% 60%, rgba(124,58,237,0.04) 0%, transparent 50%);
+}
+
+/* Headings */
+:root:not(.dark) h1,
+:root:not(.dark) h2,
+:root:not(.dark) h3,
+:root:not(.dark) h4,
+:root:not(.dark) h5,
+:root:not(.dark) h6 {
+  color: #1A0A2E;
+}
+
+/* Scrollbar in light mode */
+:root:not(.dark) ::-webkit-scrollbar-track { background: #FAF7FF; }
+
+/* Glass panels */
+:root:not(.dark) .uv-glass {
+  background: rgba(255, 255, 255, 0.72);
+  border-color: rgba(168, 85, 247, 0.22);
+  box-shadow:
+    0 4px 24px rgba(124, 58, 237, 0.1),
+    0 0 0 1px rgba(168, 85, 247, 0.07) inset;
+}
+:root:not(.dark) .uv-glass:hover {
+  border-color: rgba(168, 85, 247, 0.42);
+  box-shadow:
+    0 4px 32px rgba(124, 58, 237, 0.15),
+    0 0 0 1px rgba(168, 85, 247, 0.1) inset;
+}
+
+:root:not(.dark) .uv-glass-sm {
+  background: rgba(255, 255, 255, 0.6);
+  border-color: rgba(168, 85, 247, 0.18);
+}
+
+/* Inputs */
+:root:not(.dark) .uv-input {
+  background: rgba(255, 255, 255, 0.88);
+  border-color: rgba(168, 85, 247, 0.25);
+  color: #1A0A2E;
+}
+:root:not(.dark) .uv-input::placeholder { color: rgba(109, 40, 217, 0.4); }
+:root:not(.dark) .uv-input:hover:not(:focus) {
+  border-color: rgba(168, 85, 247, 0.45);
+}
+
+/* Skeleton — lighter shimmer in light mode */
+:root:not(.dark) .uv-skeleton {
+  background: linear-gradient(
+    90deg,
+    rgba(168, 85, 247, 0.08) 25%,
+    rgba(168, 85, 247, 0.18) 50%,
+    rgba(168, 85, 247, 0.08) 75%
+  );
+  background-size: 300% 100%;
+}
+
+/* Dot grid — more visible in light mode */
+:root:not(.dark) .dot-grid {
+  background-image: radial-gradient(rgba(124, 58, 237, 0.14) 1px, transparent 1px);
+}

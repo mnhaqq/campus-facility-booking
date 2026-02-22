@@ -1,0 +1,62 @@
+/* ════════════════════════════════════════════════
+   UV Nebula — Animation Keyframes
+   ════════════════════════════════════════════════ */
+
+@keyframes shimmerUV {
+  0%   { background-position: -300% 0; }
+  100% { background-position:  300% 0; }
+}
+
+@keyframes float {
+  0%, 100% { transform: translateY(0px); }
+  50%       { transform: translateY(-14px); }
+}
+
+@keyframes pulseUV {
+  0%, 100% { opacity: 0.6; }
+  50%       { opacity: 1; }
+}
+
+@keyframes glowPulse {
+  0%, 100% { box-shadow: 0 0 15px rgba(168, 85, 247, 0.35); }
+  50%       { box-shadow: 0 0 45px rgba(168, 85, 247, 0.75); }
+}
+
+@keyframes pingUV {
+  75%, 100% { transform: scale(2.2); opacity: 0; }
+}
+
+@keyframes orbitSpin {
+  from { transform: rotate(0deg); }
+  to   { transform: rotate(360deg); }
+}
+
+@keyframes gradientShift {
+  0%, 100% { background-position: 0%   50%; }
+  50%       { background-position: 100% 50%; }
+}
+
+@keyframes fadeSlideUp {
+  from { opacity: 0; transform: translateY(20px); }
+  to   { opacity: 1; transform: translateY(0);    }
+}
+
+/* Slot pulse available */
+@keyframes slotAvailableGlow {
+  0%, 100% { box-shadow: 0 0 0 0 rgba(52, 211, 153, 0); }
+  50%       { box-shadow: 0 0 8px 2px rgba(52, 211, 153, 0.25); }
+}
+
+/* ── Applied classes ── */
+.animate-float       { animation: float 7s ease-in-out infinite; }
+.animate-float-slow  { animation: float 10s ease-in-out infinite; }
+.animate-pulse-uv    { animation: pulseUV 3s ease-in-out infinite; }
+.animate-glow-pulse  { animation: glowPulse 2.5s ease-in-out infinite; }
+.animate-ping-uv     { animation: pingUV 1.4s cubic-bezier(0, 0, 0.2, 1) infinite; }
+.animate-orbit       { animation: orbitSpin 12s linear infinite; }
+.animate-gradient    {
+  background-size: 300% 300%;
+  animation: gradientShift 8s ease infinite;
+}
+.animate-fade-up     { animation: fadeSlideUp 0.5s ease forwards; }
+.animate-slot-glow   { animation: slotAvailableGlow 2s ease-in-out infinite; }
