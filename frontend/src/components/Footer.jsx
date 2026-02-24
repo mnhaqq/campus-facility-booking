@@ -30,7 +30,7 @@ export default function Footer() {
           <div>
             <div className="flex items-center gap-2.5 mb-4">
               <span className="text-2xl">🏛️</span>
-              <span className="text-xl font-bold uv-gradient-text tracking-tight">CampusBook</span>
+              <span className="text-xl font-bold uv-gradient-text tracking-tight">ReserveNest</span>
             </div>
             <p className="text-sm leading-relaxed max-w-xs" style={{ color: 'var(--text-dim)' }}>
               The modern way to reserve campus facilities. Built for students
@@ -66,7 +66,7 @@ export default function Footer() {
           className="mt-10 pt-6 flex flex-col sm:flex-row items-center justify-between gap-3 text-xs"
           style={{ borderTop: '1px solid rgba(168,85,247,0.1)', color: 'var(--text-faint)' }}
         >
-          <span>© {new Date().getFullYear()} CampusBook · Academic demonstration</span>
+          <span>© {new Date().getFullYear()} ReserveNest · Academic demonstration</span>
           <span style={{ color: 'var(--text-faint)' }}>Reserve any campus space in seconds.</span>
         </div>
       </div>

@@ -158,7 +158,7 @@ export default function Hero({ facilityCount = 0, bookingCount = 0, facilities =
                   📅
                 </div>
                 <div className="min-w-0 flex-1">
-                  <p className="text-xs font-semibold uppercase tracking-wider" style={{ color: 'var(--text-dim)' }}>Today's Slots</p>
+                  <p className="text-xs font-semibold uppercase tracking-wider" style={{ color: 'var(--text-dim)' }}>Today&apos;s Slots</p>
                   <AnimatePresence mode="wait">
                     <motion.div
                       key={activeFac?.id ?? 'static'}

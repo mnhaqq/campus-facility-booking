@@ -54,7 +54,7 @@ export default function Navbar() {
             className="font-bold text-xl uv-gradient-text tracking-tight"
             style={{ fontFamily: "'Space Grotesk', sans-serif" }}
           >
-            CampusBook
+            ReserveNest
           </span>
         </Link>
 
