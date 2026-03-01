@@ -57,7 +57,7 @@ export default function Home() {
             transition={{ duration: 0.6 }}
             className="text-center mb-16"
           >
-            <SectionLabel>Why CampusBook</SectionLabel>
+            <SectionLabel>Why ReserveNest</SectionLabel>
             <h2 className="text-3xl sm:text-4xl font-bold">
               Book smarter,{' '}
               <span className="uv-gradient-text">not harder.</span>
